@@ -13,14 +13,14 @@ function Mainbody(){
     const sessionUser = useSelector(state => state.session.user);
     const {booking, setBooking}=useBooking();
 
-    let sessionspotform
-    if (booking && sessionUser) {
-        sessionspotform=(
-            sessionspotform=(
-                <CreateListingForm/>
-            )
-        )
-    } 
+    // let sessionspotform
+    // if (booking && sessionUser) {
+    //     sessionspotform=(
+    //         sessionspotform=(
+    //             <CreateListingForm/>
+    //         )
+    //     )
+    // } 
 
     return (
         <div className={styles.createForm}>

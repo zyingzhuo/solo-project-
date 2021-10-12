@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check, validationResult } = require('express-validator');
 
-const {Spot} = require('../../db/models');
+const {Spot,Image} = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
@@ -25,8 +25,14 @@ const validateCreateSpots = [
 
 //to create a spots listing
 router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
-    const spot=await Spot.create(req.body);
-    res.json(spot)
+  console.log(555555555666666)
+  const {userId,city,name,price}=req.body
+  console.log(66666666666)
+  const spot=await Spot.create({userId,city,name,price});
+  //const image=await Image.create({url, spot.id})
+  console.log(77777777777)
+    return res.json(spot)
+    
 }) )
 
 

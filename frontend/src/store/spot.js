@@ -1,4 +1,7 @@
-export const ADD_SPOT = 'spots/ADD_SPOT';
+import { csrfFetch } from './csrf';
+
+
+const ADD_SPOT = 'spots/ADD_SPOT';
 
 const addOneSpot = (spot) => ({
     type: ADD_SPOT,
@@ -6,17 +9,18 @@ const addOneSpot = (spot) => ({
   });
 
 export const createSpot = (data) =>async (dispatch)=>{
-    
-    const response = await fetch(`/api/spots`, {
+    console.log(3333333333)
+    const response = await csrfFetch(`/api/spots`, {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
       });
-
+      console.log(44444444444)
       if (response.ok) {
         const spot = await response.json();
+        //console.log('$$$$$$$$',spot)
         dispatch(addOneSpot(spot));
         return spot;
       }
@@ -39,8 +43,12 @@ const spotReducer = (state=initialState, action)=>{
               spotsList.push(action.spot);
               //newState.list = sortList(pokemonList);
               return newState;
+
             }
+              default:
+              return state;
+  }
         }
-    }
+    
 
 export default spotReducer

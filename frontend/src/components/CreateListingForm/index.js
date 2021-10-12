@@ -9,31 +9,47 @@ import styles from './CreateListingForm.module.css';
 import {createSpot} from '../../store/spot'
 
 function CreateListingForm() {
+
     const dispatch = useDispatch();
     const history=useHistory();
-    const sessionUser = useSelector(state => state.session.user);
+
+    const userId = useSelector(state => state.session.user.id);
+
     const [city, setCity] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
+    //const [url, setURL]=useState('')
   
+
+    // const reset=()=>{
+    //   userId=
+    //   setCity='';
+    //   setName='';
+    //   setPrice=0;
+//      // setURL=""
+// ;
+//     }
     // if (sessionUser) return (
     //   <Redirect to="/" />
     // );
   
     const handleSubmit = async(e) => {
-      e.preventDefault();
 
+      e.preventDefault();
       const payload={
+          userId,
           city,
           name,
-          price
+          price,
       }
-
-  const spot=await dispatch(createSpot(payload));
-
+    console.log(111111111)
+      const spot=await dispatch(createSpot(payload));
+    console.log(22222222)
       if(spot) {
           history.push(`/spots/${spot.id}`)
+          // reset()
       }
+
     }
     
   
@@ -68,6 +84,15 @@ function CreateListingForm() {
             required
           />
         </label>
+        {/* <label>
+          url
+          <input
+            type="url"
+            value={url}
+            onChange={(e) => setURL(e.target.value)}
+            required
+          />
+        </label> */}
           </div>
         <button type="submit" >Create your listing</button>
       </form>
