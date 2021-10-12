@@ -7,6 +7,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Mainbody from "./components/Mainbody"
 import SingleSpot from "./components/SingleSpot";
+import AllSpots from "./components/AllSpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route path='/spots/:spotId'>
           <SingleSpot/>
+          </Route>
+          <Route path='/spots'>
+            <AllSpots />
           </Route>
         </Switch>
       )}
