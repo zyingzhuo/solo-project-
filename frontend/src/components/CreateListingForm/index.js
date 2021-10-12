@@ -47,6 +47,7 @@ function CreateListingForm() {
       const spot=await dispatch(createSpot(payload));
     console.log(22222222)
       if(spot) {
+        console.log(spot)
           history.push(`/spots/${spot.id}`)
           // reset()
       }

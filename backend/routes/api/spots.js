@@ -30,16 +30,17 @@ router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
   console.log(66666666666)
   const spot=await Spot.create({userId,city,name,price});
   const image=await Image.create({url, spotId:spot.id})
+ 
   console.log(77777777777)
     return res.json(spot)
     
 }) )
 
 router.get('/:id', asyncHandler(async function(req,res) {
-    const spot=await Spot.findByPk(req.params.id, {
-      include: Image
+    const spot=await Spot.findByPk((req.params.id), {
+      include: {model:Image}
     });
-  
+  console.log('$$$$$$$$$$$', spot)
     return res.json(spot)
 }))
 

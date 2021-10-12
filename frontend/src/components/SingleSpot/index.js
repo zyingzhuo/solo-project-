@@ -11,7 +11,7 @@ const SingleSpot =() =>{
    
 
     const {spotId}= useParams();
-    const spot=useSelector(state=>Object.values(state.spot))[0];
+    const spot=useSelector(state=>state.spot[spotId]);
     //console.log(spot)
     const dispatch=useDispatch();
 
@@ -19,14 +19,23 @@ const SingleSpot =() =>{
         dispatch(getOneSpot(spotId))
    
     }, [dispatch, spotId])
-
+  console.log(spotId)
     return (
         <div>
-            'hello world'
-            {spot.name}
-            {spot.price}
-            {spot.city}
-            {spot.url}
+            'hello world
+            { spot&&(
+                <>
+            {spot?.name}
+            {spot?.price}
+            {spot?.city}
+            {/* {spot?.url} */}
+            <div>
+                <img src={(spot?.Images)[0].url} />
+            </div>
+            {/* {(spot?.Images)[0].url}  */}
+            </>)}
+
+            
         </div>
     )
 
