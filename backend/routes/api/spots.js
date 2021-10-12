@@ -36,21 +36,21 @@ router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
     
 }) )
 
-router.get('/:id', asyncHandler(async function(req,res) {
-    const spot=await Spot.findByPk((req.params.id), {
-      include: {model:Image}
-    });
- 
-    return res.json(spot)
-}))
-
-
 router.get('/', asyncHandler(async function(req,res) {
   const spots=await Spot.findAll({
     include: {model:Image}
   });
   return res.json(spots)
 }))
+
+router.get('/:id', asyncHandler(async function(req,res) {
+    const spot=await Spot.findByPk((req.params.id), {
+      include: {model:Image}
+    });  
+ 
+    return res.json(spot)
+}))    
+
 
 
 
