@@ -8,6 +8,9 @@ const addOneSpot = (spot) => ({
     spot
   });
 
+
+
+
 export const createSpot = (data) =>async (dispatch)=>{
     console.log(3333333333)
     const response = await csrfFetch(`/api/spots`, {
@@ -27,12 +30,24 @@ export const createSpot = (data) =>async (dispatch)=>{
     
 }
 
+
+export const getOneSpot=(id)=>async(dispatch)=>{
+
+  const response=await csrfFetch(`/api/spots/${id}`);
+
+  if(response.ok) {
+    const spot=await response.json();
+    dispatch(addOneSpot(spot))
+  }
+}
+
 const initialState={}
 
 
 const spotReducer = (state=initialState, action)=>{
     switch(action.type) {
-        case addOneSpot: {
+        case ADD_SPOT: {
+          console.log(action)
             const newState = {
                 ...state,
                 [action.spot.id]: action.spot

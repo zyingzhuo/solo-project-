@@ -18,7 +18,7 @@ function CreateListingForm() {
     const [city, setCity] = useState('');
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
-    //const [url, setURL]=useState('')
+    const [url, setURL]=useState('')
   
 
     // const reset=()=>{
@@ -41,6 +41,7 @@ function CreateListingForm() {
           city,
           name,
           price,
+          url
       }
     console.log(111111111)
       const spot=await dispatch(createSpot(payload));
@@ -84,15 +85,15 @@ function CreateListingForm() {
             required
           />
         </label>
-        {/* <label>
-          url
+        <label>
+         Image url
           <input
             type="url"
             value={url}
             onChange={(e) => setURL(e.target.value)}
             required
           />
-        </label> */}
+        </label>
           </div>
         <button type="submit" >Create your listing</button>
       </form>
