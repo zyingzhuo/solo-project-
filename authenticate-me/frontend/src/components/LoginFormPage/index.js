@@ -4,10 +4,12 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.css';
+import styles from './LoginForm.module.css';
 
 function LoginFormPage() {
     const dispatch = useDispatch();
+    //并且useSelector会订阅store, 当action被dispatched的时候，会运行selector。
+    //当action被dispatched的时候，useSelector()将对前一个selector结果值和当前结果值进行浅比较。如果不同，那么就会被re-render
     const sessionUser = useSelector(state => state.session.user);
     const [credential, setCredential] = useState('');
     const [password, setPassword] = useState('');
@@ -28,10 +30,12 @@ function LoginFormPage() {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
+      <div className={styles.outsideForm} >
+      <form onSubmit={handleSubmit} className={styles.LoginFormPage}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+        <div className={styles.loginContainer}>
         <label>
           Username or Email
           <input
@@ -50,8 +54,10 @@ function LoginFormPage() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+          </div>
+        <button type="submit" className={styles.loginButton}>Log In</button>
       </form>
+      </div>
     );
   }
   

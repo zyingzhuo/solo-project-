@@ -1,0 +1,48 @@
+/* button {
+    text-decoration: none;
+} */
+.sessionLink{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+
+}
+.session_link_wrap {
+    border: solid #E6E6FA 5px;
+    
+    border-radius: 10px;
+    background-color:#E6E6FA;
+    height:20px;
+    margin-top: -5px
+}
+
+.session_link_wrap:hover {
+background-color: yellow;
+
+}
+.demobutton {
+    border:solid #E6E6FA 5px;
+    border-radius:10px;
+    background-color:#E6E6FA
+}
+.demobutton:hover {
+    background-color:yellow
+}
+
+.profilelists {
+    margin-right:10vw;
+}
+
+.profileButtonContainer{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+.openMenu{
+    margin-right: 10vw;
+}

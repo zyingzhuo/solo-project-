@@ -24,7 +24,7 @@ if (!isProduction) {
     contentSecurityPolicy: false
   }));
   
-  // Set the _csrf token and create req.csrfToken method
+  //Set the _csrf token and create req.csrfToken method please edit back
   app.use(
     csurf({
       cookie: {

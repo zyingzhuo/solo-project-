@@ -1,0 +1,32 @@
+.formContainer {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 	#E6E6FA 11px;
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    align-items: center;
+    
+}
+
+.outsideForm{
+    display:flex;
+    justify-content: center;
+   
+}
+
+.signupContainer{
+    display:flex;
+    flex-direction: column;
+    
+    justify-content: space-evenly;
+    padding: 20px;
+    border: solid #E6E6FA 5px;
+    border-radius: 20px;
+    height: 100px;
+}
+
+.signupB{
+    margin-top: 20px
+}
