@@ -47,6 +47,13 @@ router.put(
     
 
     const updatedSpot = await spot.update(req.body);
+    const imagesArr=await Image.findAll({
+      where: {spotId:spot.id}
+    })
+    for (let imageArr of imagesArr) {
+      imageArr.destroy()
+    }
+    
     const a=await Image.create(req.body.Images[0])
     spot.dataValues.Images=[a]
      return res.json(spot)
