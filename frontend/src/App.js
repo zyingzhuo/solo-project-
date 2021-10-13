@@ -23,7 +23,7 @@ function App() {
       <Mainbody />
       {isLoaded && (
         <Switch>
-          <Route path='/'></Route>
+          <Route exact path='/'></Route>
 
           <Route path="/login" >
             <LoginFormPage />
@@ -31,10 +31,10 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/spots/:spotId'>
+          <Route  path='/spots/:spotId'>
           <SingleSpotPage/>
           </Route>
-          <Route path='/spots'>
+          <Route exact path='/spots'>
             <AllSpots />
           </Route>
           <Route>

@@ -50,7 +50,7 @@ function CreateListingForm() {
         //console.log('test',spot)
         // <Redirect to='/spots' />
           //history.push(`/spots`)
-          history.push(`spots/${spot.id}`)
+          history.push(`/spots/${spot.id}`)
           // reset()
       }
 

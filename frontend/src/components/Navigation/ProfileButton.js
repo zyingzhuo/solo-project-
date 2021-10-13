@@ -47,6 +47,7 @@ function ProfileButton({ user }) {
           <li style={{ listStyleType: 'none' }}>{user.username}</li>
           <li style={{ listStyleType: 'none' }}>{user.email}</li>
           <li style={{ listStyleType: 'none' }} onClick={()=>setBooking(true)}>host your place</li>
+          <li style={{ listStyleType: 'none' }} ><NavLink to="/spots">view all listings</NavLink></li>
           <li style={{ listStyleType: 'none'}}>
             <button onClick={logout} >Log Out</button>
           </li>

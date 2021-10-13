@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 
 const ADD_SPOT = 'spots/ADD_SPOT';
 const LOAD_SPOTS='spots/LOAD_SPOTS'
+const DELETE_SPOT='spots/DELETE_SPOT'
 
 const addOneSpot = (spot) => ({
     type: ADD_SPOT,
@@ -14,6 +15,11 @@ const loadSpots=(spots)=>({
   type: LOAD_SPOTS,
   spots
   
+})
+
+const deleteOneSpot=(spotId)=>({
+  type: DELETE_SPOT,
+  spotId
 })
 
 
@@ -56,34 +62,57 @@ export const getSpots=()=>async(dispatch)=>{
 }
 
 
+export const deleteSpot=(spotId)=>async(dispatch)=>{
+   console.log('!!!!!!!!!!!')
+   const response= await csrfFetch(`/api/spots/${spotId}`, {
+     method: 'delete'
+   });
+   
+   if(response.ok) {
+     const spot=await response.json();
+     dispatch(deleteOneSpot(spot.id))
+     return spot
+   }
+}
+
 const initialState={}
 
 
 const spotReducer = (state=initialState, action)=>{
     switch(action.type) {
-      case LOAD_SPOTS:
+      case LOAD_SPOTS: {
         const newState={...state}
         action.spots.forEach(spot=>{
         newState[spot.id]=spot
         })
         return newState;
-        
+      }
         case ADD_SPOT: {
           
-            const newState = {
-                ...state,
-                [action.spot.id]: action.spot
-              };
-              const spotsList = Object.values(newState)
+            // const newState = {
+            //     ...state,
+            //     [action.spot.id]: action.spot
+            //   };
+            //   const spotsList = Object.values(newState)
               
-              spotsList.map((id) => newState[id]);
-              spotsList.push(action.spot);
-              //newState.list = sortList(pokemonList);
-              return newState;
-
+            //   spotsList.map((id) => newState[id]);
+            //   spotsList.push(action.spot);
+            //   //newState.list = sortList(pokemonList);
+            //   return newState;
+            const newState={...state}
+           newState[action.spot.id]=action.spot;
+           return newState
             }
-              default:
-              return state;
+
+        case DELETE_SPOT: {
+           const newState={...state};
+           delete newState[action.spotId];
+           return newState
+        }
+              default: {
+                return state;
+              }
+              
   }
         }
     

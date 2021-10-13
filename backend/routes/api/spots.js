@@ -22,19 +22,37 @@ const validateCreateSpots = [
       .withMessage('Please provide price detail.'),
     handleValidationErrors,
   ];
-
+  //validateCreateSpots
 //to create a spots listing
-router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
+router.post('/', asyncHandler(async(req,res)=>{
   console.log(555555555666666)
   const {userId,city,name,price,url}=req.body
   console.log(66666666666)
   const spot=await Spot.create({userId,city,name,price});
   const image=await Image.create({url, spotId:spot.id})
- 
+  spot.dataValues.Images=[image]
+
   console.log(77777777777)
     return res.json(spot)
     
 }) )
+
+router.put(
+  '/:id',
+  asyncHandler(async (req, res) =>{
+    // const spot=await Spot.findByPk((parseInt(req.params.id));
+
+    const{userId,city,name,price,url}=req.body
+    const updatedSpot = await Spot.update(userId,city,name,price);
+    const updatedImage=await Image.update({url, spotId:updatedSpot.id})
+
+     updatedSpot.dataValues.Images=[updatedImage]
+
+     return res.json(updatedSpot)
+    })
+   
+);
+
 
 router.get('/', asyncHandler(async function(req,res) {
   const spots=await Spot.findAll({
@@ -44,6 +62,8 @@ router.get('/', asyncHandler(async function(req,res) {
   return res.json(spots)
 }))
 
+
+
 router.get('/:id', asyncHandler(async function(req,res) {
     const spot=await Spot.findByPk((req.params.id), {
       include: {model:Image}
@@ -52,6 +72,16 @@ router.get('/:id', asyncHandler(async function(req,res) {
     return res.json(spot)
 }))    
 
+
+
+router.delete("/:id", asyncHandler(async function (req, res) {
+  const spot=await Spot.findByPk((parseInt(req.params.id)), {
+    include: {model:Image}
+  });  
+  spot.destroy()
+  console.log('$$$$$$$$$')
+  res.json({});
+}));
 
 
 
