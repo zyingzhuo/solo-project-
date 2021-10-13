@@ -40,15 +40,16 @@ router.post('/', asyncHandler(async(req,res)=>{
 router.put(
   '/:id',
   asyncHandler(async (req, res) =>{
-    // const spot=await Spot.findByPk((parseInt(req.params.id));
+    
+    const spot=await Spot.findByPk((parseInt(req.params.id)), {
+      include: {model:Image}
+    });  
+    
 
-    const{userId,city,name,price,url}=req.body
-    const updatedSpot = await Spot.update(userId,city,name,price);
-    const updatedImage=await Image.update({url, spotId:updatedSpot.id})
-
-     updatedSpot.dataValues.Images=[updatedImage]
-
-     return res.json(updatedSpot)
+    const updatedSpot = await spot.update(req.body);
+    const a=await Image.create(req.body.Images[0])
+    spot.dataValues.Images=[a]
+     return res.json(spot)
     })
    
 );
@@ -80,8 +81,9 @@ router.delete("/:id", asyncHandler(async function (req, res) {
   });  
   spot.destroy()
   console.log('$$$$$$$$$')
-  res.json({});
+  res.json(spot);
 }));
+
 
 
 

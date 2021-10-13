@@ -5,6 +5,7 @@ const ADD_SPOT = 'spots/ADD_SPOT';
 const LOAD_SPOTS='spots/LOAD_SPOTS'
 const DELETE_SPOT='spots/DELETE_SPOT'
 
+
 const addOneSpot = (spot) => ({
     type: ADD_SPOT,
     spot
@@ -21,7 +22,6 @@ const deleteOneSpot=(spotId)=>({
   type: DELETE_SPOT,
   spotId
 })
-
 
 
 export const createSpot = (data) =>async (dispatch)=>{
@@ -74,6 +74,24 @@ export const deleteSpot=(spotId)=>async(dispatch)=>{
      return spot
    }
 }
+
+
+export const updateSpot=(data)=>async(dispatch)=>{
+  const response=await csrfFetch(`/api/spots/${data.id}`, {
+    method:'put',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(response.ok) {
+    const updatedSpot=await response.json();
+    dispatch(addOneSpot(updatedSpot));
+    return updatedSpot
+  }
+}
+
 
 const initialState={}
 

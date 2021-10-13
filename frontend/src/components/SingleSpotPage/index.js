@@ -4,12 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { useHistory, useParams } from 'react-router';
 import { useState, useEffect } from 'react';
-import { getOneSpot } from '../../store/spot';
+import { getOneSpot, updateSpot } from '../../store/spot';
 import { useBooking } from '../../context/bookContext.js'
 //import styles from './LoginForm.module.css';
 import { deleteSpot } from '../../store/spot';
+import EditListingForm from '../EditListingForm';
+import { useEditForm } from '../../context/editSpotContext';
 
 const SingleSpotPage =() =>{
+    
+    const {editForm, setEditForm}=useEditForm();
+
     const {setBooking}=useBooking()
     let history=useHistory()
     
@@ -28,6 +33,8 @@ const SingleSpotPage =() =>{
         if(response) {history.push('/spots')}
         
        };
+
+   
   
     return (
         <div>
@@ -41,9 +48,11 @@ const SingleSpotPage =() =>{
             <div>
                 <img src={(spot?.Images)[0]?.url} />
             </div>
-            <button onClick={()=>setBooking(true)} >edit</button>
+            <button onClick={()=>setEditForm(true)} >edit</button>
             <button id={spot?.id} onClick={handleRemoveItem}>delete</button>
-            {/* {(spot?.Images)[0].url}  */}
+            {editForm && (
+                <EditListingForm spotId={spot.id}/>
+            )}
             </>)}
 
             
