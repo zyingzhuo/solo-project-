@@ -38,8 +38,9 @@ router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
 
 router.get('/', asyncHandler(async function(req,res) {
   const spots=await Spot.findAll({
-    include: {model:Image}
+    include: Image
   });
+  console.log(spots)
   return res.json(spots)
 }))
 

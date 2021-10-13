@@ -6,26 +6,26 @@ import { useParams } from 'react-router';
 import { useState, useEffect } from 'react';
 import { getOneSpot } from '../../store/spot';
 //import styles from './LoginForm.module.css';
-import { NavLink } from 'react-router-dom';
 
-const SingleSpot =({spot}) =>{
+const SingleSpotPage =() =>{
    
-    console.log('########', spot)
+    
     const {spotId}= useParams();
-    const spotFromSelector=useSelector(state=>state.spot[spotId]);
+    const spot=useSelector(state=>state.spot[spotId]);
+    
     const dispatch=useDispatch();
 
-    // useEffect(()=>{
-    //     dispatch(getOneSpot(spotId))
+    useEffect(()=>{
+        dispatch(getOneSpot(spotId))
    
-    // }, [dispatch, spotId])
-  //console.log(spotId)
+    }, [dispatch, spotId])
+  
     return (
         <div>
-            'hello world
+            'single spot page'
             { spot&&(
                 <>
-            <NavLink to={`/spots/${spot.id}`}>{spot?.name}</NavLink>
+            {spot?.name}
             {spot?.price}
             {spot?.city}
             {/* //{spot?.url} */}
@@ -41,4 +41,4 @@ const SingleSpot =({spot}) =>{
 
 }
 
-export default SingleSpot
+export default SingleSpotPage

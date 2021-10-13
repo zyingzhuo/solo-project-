@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect ,useHistory} from 'react-router-dom';
 import styles from './CreateListingForm.module.css';
-
+//import { Redirect } from 'react-router';
 import {createSpot} from '../../store/spot'
 
 function CreateListingForm() {
@@ -47,8 +47,10 @@ function CreateListingForm() {
       const spot=await dispatch(createSpot(payload));
     console.log(22222222)
       if(spot) {
-        console.log(spot)
-          history.push(`/spots/${spot.id}`)
+        //console.log('test',spot)
+        // <Redirect to='/spots' />
+          //history.push(`/spots`)
+          history.push(`spots/${spot.id}`)
           // reset()
       }
 

@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import Mainbody from "./components/Mainbody"
 import SingleSpot from "./components/SingleSpot";
 import AllSpots from "./components/AllSpots";
+import SingleSpotPage from "./components/SingleSpotPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,17 +23,22 @@ function App() {
       <Mainbody />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route path='/'></Route>
+
+          <Route path="/login" >
             <LoginFormPage />
           </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route path='/spots/:spotId'>
-          <SingleSpot/>
+          <SingleSpotPage/>
           </Route>
           <Route path='/spots'>
             <AllSpots />
+          </Route>
+          <Route>
+            <h2>404 not found</h2>
           </Route>
         </Switch>
       )}

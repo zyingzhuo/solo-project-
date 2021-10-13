@@ -7,13 +7,14 @@ import { useState, useEffect } from 'react';
 import { getOneSpot } from '../../store/spot';
 import { getSpots } from '../../store/spot';
 import SingleSpot from '../../components/SingleSpot'
+import { NavLink } from 'react-router-dom';
 
 
 const AllSpots=()=>{
   
   const dispatch = useDispatch();
   const spotsArr=useSelector((state)=>Object.values(state.spot))
-  
+  console.log(spotsArr)
   useEffect(()=>{
       dispatch(getSpots())
   },[dispatch])
@@ -26,7 +27,7 @@ const AllSpots=()=>{
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
         {spotsArr.map((spot) => (
-          <SingleSpot  name={spot.name} />
+          <SingleSpot  spot={spot} />
         ))}
         </ul>
     </div>
