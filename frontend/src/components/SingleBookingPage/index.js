@@ -26,7 +26,7 @@ const SingleBookingPage =() =>{
 
     const handleDeleteBooking=async(e)=>{
         const response=await dispatch(deleteBooking(e.target.id));
-        if(response) {history.push('/users/${userId}/bookings')}
+        if(response) {history.push(`/users/${userId}/bookings`)}
     }
   
 
