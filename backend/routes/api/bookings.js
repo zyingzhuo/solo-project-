@@ -13,9 +13,17 @@ router.post('/', asyncHandler(async(req,res)=>{
     const {spotId,userId,startDate,endDate}=req.body
 
     const booking=await Booking.create({spotId,userId,startDate,endDate})
+    const spot=await Spot.findByPk(spotId)
+    booking.dataValues.Spot=spot
+    console.log('#######', booking)
     return res.json(booking)
 }))
 
+router.get('/:id(\\d+)', asyncHandler(async function(req,res) {
+    const booking=await Booking.findByPk(parseInt(req.params.id));
+    return res.json(booking)
+  }))
+  
 
 
 module.exports = router;

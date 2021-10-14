@@ -37,6 +37,17 @@ export const getBookings=(userId)=>async(dispatch)=>{
     dispatch(loadBookings(bookings))
 }
 
+
+export const getOneBooking=( bookingId)=>async(dispatch)=>{
+
+    const response=await csrfFetch(`api/bookings/${bookingId}`)
+    if(response.ok) {
+        const booking=await response.json();
+        dispatch(addOneBooking(booking))
+    }
+
+}
+
 const initialState={};
 
 const bookingReducer=(state=initialState, action)=>{

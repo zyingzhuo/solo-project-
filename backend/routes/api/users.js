@@ -51,13 +51,15 @@ router.post(
         where: {userId:parseInt(req.params.id)},
         include: Spot
     })
-    console.log(bookings)
+    //console.log(bookings)
     return res.json(bookings)
 }))
 
-router.get('/:id(\\d+)/bookings/:id')
 
-router.delete('/:id(\\d+)/bookings')
+
+// router.get('/:id(\\d+)/bookings/:id')
+
+
 
   module.exports = router;
 

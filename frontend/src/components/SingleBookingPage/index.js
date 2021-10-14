@@ -7,23 +7,26 @@ import { useState, useEffect } from 'react';
 import { getOneSpot } from '../../store/spot';
 //import styles from './LoginForm.module.css';
 import { NavLink } from 'react-router-dom';
+import {getBookings, getOneBooking} from '../../store/booking'
 
-const SingleBooking =({booking}) =>{
+const SingleBookingPage =() =>{
    
     
-    const {spotId}= useParams();
-    const spotFromSelector=useSelector(state=>state.spot[spotId]);
+    const {bookingId}= useParams();
+    const booking=useSelector(state=>state.booking[bookingId]);
     const dispatch=useDispatch();
     const userId=useSelector((state)=>state.session.user.id)
-    
+    const [currentBooking, setCurrentBooking]= useState()
 
-    // useEffect(()=>{
-    //     dispatch(getOneSpot(spotId))
+    useEffect(()=>{
+        dispatch(getBookings(userId))
    
-    // }, [dispatch, spotId])
-  //console.log(spotId)
+    }, [dispatch])
+  
+
     return (
         <div>
+            hello
             {/* 'hello world
             { booking&&(
                 <>
@@ -33,9 +36,9 @@ const SingleBooking =({booking}) =>{
             </>)} */}
             {booking&&(
             <div>
-            <p>Your trip to {booking?.Spot.name} from {booking?.startDate} to {booking?.endDate} is booked</p>
-            <NavLink to={`/bookings/${booking.id}`}>booking details</NavLink>
+            <p>Your trip to {booking?.Spot?.name} from {booking?.startDate} to {booking?.endDate} is booked</p>
             
+            <button>delete</button>
             </div>)}
 
             
@@ -44,4 +47,4 @@ const SingleBooking =({booking}) =>{
 
 }
 
-export default SingleBooking
+export default SingleBookingPage
