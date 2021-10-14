@@ -24,7 +24,7 @@ const validateCreateSpots = [
   ];
   //validateCreateSpots
 //to create a spots listing
-router.post('/', asyncHandler(async(req,res)=>{
+router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
   console.log(555555555666666)
   const {userId,city,name,price,url}=req.body
   console.log(66666666666)
@@ -32,7 +32,7 @@ router.post('/', asyncHandler(async(req,res)=>{
   const image=await Image.create({url, spotId:spot.id})
   spot.dataValues.Images=[image]
 
-  console.log(77777777777)
+ 
     return res.json(spot)
     
 }) )

@@ -8,9 +8,11 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-//router.use('/bookings',bookingsRouter);
+router.use('/bookings',bookingsRouter);
 
 router.use('/spots', spotsRouter)
+
+
 
 
 

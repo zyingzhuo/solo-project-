@@ -9,7 +9,7 @@ import { restoreCSRF, csrfFetch } from './store/csrf';
 import * as sessionActions from './store/session';
 import BookingProvider from './context/bookContext';
 import EditFormProvider from './context/editSpotContext';
-
+import CreateBookingFormProvider from './context/createBookingContext';
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {
@@ -27,6 +27,7 @@ if (process.env.NODE_ENV !== 'production') {
 function Root() {
   return (
     <ReduxProvider store={store}>
+      <CreateBookingFormProvider>
       <EditFormProvider>
       <BookingProvider>
       <BrowserRouter>
@@ -34,6 +35,7 @@ function Root() {
       </BrowserRouter>
       </BookingProvider>
       </EditFormProvider>
+      </CreateBookingFormProvider>
     </ReduxProvider>
   );
 }

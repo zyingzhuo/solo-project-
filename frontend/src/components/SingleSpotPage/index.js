@@ -10,12 +10,15 @@ import { useBooking } from '../../context/bookContext.js'
 import { deleteSpot } from '../../store/spot';
 import EditListingForm from '../EditListingForm';
 import { useEditForm } from '../../context/editSpotContext';
+import { useCreateBookingForm } from '../../context/createBookingContext';
+import CreateBookingForm from'../CreateBookingForm'
 
 const SingleSpotPage =() =>{
     
     const {editForm, setEditForm}=useEditForm();
 
     const {setBooking}=useBooking()
+    const {createBooking, setCreateBooking}=useCreateBookingForm()
     let history=useHistory()
     
     const {spotId}= useParams();
@@ -50,9 +53,15 @@ const SingleSpotPage =() =>{
             </div>
             <button onClick={()=>setEditForm(true)} >edit</button>
             <button id={spot?.id} onClick={handleRemoveItem}>delete</button>
+            <button onClick={()=>setCreateBooking(true)}>create booking</button>
             {editForm && (
                 <EditListingForm spotId={spot.id}/>
             )}
+            {createBooking&& (
+                <CreateBookingForm spot={spot}/>
+            )
+
+            }
             </>)}
 
             

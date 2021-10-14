@@ -33,7 +33,7 @@ export const createSpot = (data) =>async (dispatch)=>{
         },
         body: JSON.stringify(data)
       });
-      console.log(44444444444)
+      
       if (response.ok) {
         const spot = await response.json();
         //console.log('$$$$$$$$',spot)

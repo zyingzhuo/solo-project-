@@ -43,9 +43,9 @@ function CreateListingForm() {
           price,
           url
       }
-    console.log(111111111)
+    
       const spot=await dispatch(createSpot(payload));
-    console.log(22222222)
+    
       if(spot) {
         //console.log('test',spot)
         // <Redirect to='/spots' />

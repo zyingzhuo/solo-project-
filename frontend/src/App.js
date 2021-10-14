@@ -9,6 +9,7 @@ import Mainbody from "./components/Mainbody"
 import SingleSpot from "./components/SingleSpot";
 import AllSpots from "./components/AllSpots";
 import SingleSpotPage from "./components/SingleSpotPage";
+import AllBookings from "./components/AllBookings"
 
 function App() {
   const dispatch = useDispatch();
@@ -34,8 +35,15 @@ function App() {
           <Route  path='/spots/:spotId'>
           <SingleSpotPage/>
           </Route>
+          
           <Route exact path='/spots'>
             <AllSpots />
+          </Route>
+          <Route exact path='/users/:userId/bookings'>
+            <AllBookings />
+          </Route>
+          <Route exact path='users/:userId/bookings/:id'>
+
           </Route>
           <Route>
             <h2>404 not found</h2>

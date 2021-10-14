@@ -1,16 +1,18 @@
 // frontend/src/components/Navigation/ProfileButton.js
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import styles from "./Navigation.module.css"
 import { NavLink } from "react-router-dom";
 import CreateListingForm from "../CreateListingForm";
 import { useBooking } from '../../context/bookContext.js'
 
+
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const [showForm, setShowForm]=useState('')
+  const userId = useSelector((state) => state.session.user.id)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -48,6 +50,7 @@ function ProfileButton({ user }) {
           <li style={{ listStyleType: 'none' }}>{user.email}</li>
           <li style={{ listStyleType: 'none' }} onClick={()=>setBooking(true)}>host your place</li>
           <li style={{ listStyleType: 'none' }} ><NavLink to="/spots">view all listings</NavLink></li>
+          <li style={{ listStyleType: 'none' }} ><NavLink to={`/users/${userId}/bookings`}>view all your bookings</NavLink></li>
           <li style={{ listStyleType: 'none'}}>
             <button onClick={logout} >Log Out</button>
           </li>
