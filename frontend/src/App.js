@@ -6,11 +6,12 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import Mainbody from "./components/Mainbody"
-import SingleSpot from "./components/SingleSpot";
+//import SingleSpot from "./components/SingleSpot";
 import AllSpots from "./components/AllSpots";
 import SingleSpotPage from "./components/SingleSpotPage";
 import AllBookings from "./components/AllBookings"
 import SingleBookingPage from "./components/SingleBookingPage";
+import AllMySpots from "./components/AllMySpots";
 
 function App() {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ function App() {
           </Route>
           <Route exact path='/bookings/:bookingId'>
             <SingleBookingPage />
+          </Route>
+          <Route exact path='/users/:userId/spots'>
+            <AllMySpots/>
           </Route>
           <Route>
             <h2>404 not found</h2>

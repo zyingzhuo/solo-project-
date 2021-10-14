@@ -61,6 +61,12 @@ export const getSpots=()=>async(dispatch)=>{
   dispatch(loadSpots(spots))
 }
 
+export const getMySpots=(userId)=>async(dispatch)=>{
+  const response=await csrfFetch(`api/users/${userId}/spots`)
+  const spots=await response.json();
+  dispatch(loadSpots(spots))
+}
+
 
 export const deleteSpot=(spotId)=>async(dispatch)=>{
    console.log('!!!!!!!!!!!')
