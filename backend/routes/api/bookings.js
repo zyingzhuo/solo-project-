@@ -25,5 +25,11 @@ router.get('/:id(\\d+)', asyncHandler(async function(req,res) {
   }))
   
 
+router.delete('/:id(\\d+)', asyncHandler(async function(req,res) {
+    const booking=await Booking.findByPk(parseInt(req.params.id))
+    booking.destroy()
+    res.json(booking)
+}))
+
 
 module.exports = router;
