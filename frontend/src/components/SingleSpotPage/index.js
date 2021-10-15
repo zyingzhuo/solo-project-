@@ -23,6 +23,7 @@ const SingleSpotPage =() =>{
     
     const {spotId}= useParams();
     const spot=useSelector(state=>state.spot[spotId]);
+    const userId=useSelector(state=>state.session.user.id)
     
     const dispatch=useDispatch();
 
@@ -33,7 +34,7 @@ const SingleSpotPage =() =>{
 
     const handleRemoveItem = async(e) => {
        const  response=await dispatch(deleteSpot(e.target.id));
-        if(response) {history.push('/spots')}
+        if(response) {history.push(`/users/${userId}/spots`)}
         
        };
 
