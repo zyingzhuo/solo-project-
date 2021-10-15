@@ -20,13 +20,13 @@ const AllMySpots=()=>{
   const userId=useSelector((state)=>state.session.user?.id)
   useEffect(()=>{
       dispatch(getMySpots(userId))
-  },[dispatch])
+  },[dispatch,userId])
  
 
  
   return (
     <div>
-      <h1>This is all your bookings</h1>
+      <h1>This is all your listings</h1>
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
         {spotsArr.map((spot) => (

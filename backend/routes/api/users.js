@@ -56,7 +56,7 @@ router.post(
 }))
 
 router.get('/:id(\\d+)/spots', asyncHandler(async function(req,res) {
-  const spots=await Booking.findAll({
+  const spots=await Spot.findAll({
     where:{userId: parseInt(req.params.id)},
     include: Image
   })
