@@ -10,7 +10,7 @@ import { NavLink } from 'react-router-dom';
 
 const SingleSpot =({spot}) =>{
    
-    console.log('########', spot)
+    
     const {spotId}= useParams();
     const spotFromSelector=useSelector(state=>state.spot[spotId]);
     const dispatch=useDispatch();

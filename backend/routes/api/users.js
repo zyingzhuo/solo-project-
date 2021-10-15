@@ -51,7 +51,7 @@ router.post(
         where: {userId:parseInt(req.params.id)},
         include: Spot
     })
-    //console.log(bookings)
+    
     return res.json(bookings)
 }))
 

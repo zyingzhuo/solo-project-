@@ -14,7 +14,7 @@ const AllSpots=()=>{
   
   const dispatch = useDispatch();
   const spotsArr=useSelector((state)=>Object.values(state.spot))
-  console.log(spotsArr)
+  
   useEffect(()=>{
       dispatch(getSpots())
   },[dispatch])

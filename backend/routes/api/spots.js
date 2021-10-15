@@ -25,9 +25,9 @@ const validateCreateSpots = [
   //validateCreateSpots
 //to create a spots listing
 router.post('/', validateCreateSpots,asyncHandler(async(req,res)=>{
-  console.log(555555555666666)
+  
   const {userId,city,name,price,url}=req.body
-  console.log(66666666666)
+  
   const spot=await Spot.create({userId,city,name,price});
   const image=await Image.create({url, spotId:spot.id})
   spot.dataValues.Images=[image]
@@ -66,7 +66,7 @@ router.get('/', asyncHandler(async function(req,res) {
   const spots=await Spot.findAll({
     include: Image
   });
-  console.log(spots)
+  
   return res.json(spots)
 }))
 
@@ -87,7 +87,7 @@ router.delete("/:id", asyncHandler(async function (req, res) {
     include: {model:Image}
   });  
   spot.destroy()
-  console.log('$$$$$$$$$')
+  
   res.json(spot);
 }));
 

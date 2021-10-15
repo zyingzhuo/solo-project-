@@ -15,7 +15,7 @@ router.post('/', asyncHandler(async(req,res)=>{
     const booking=await Booking.create({spotId,userId,startDate,endDate})
     const spot=await Spot.findByPk(spotId)
     booking.dataValues.Spot=spot
-    console.log('#######', booking)
+   
     return res.json(booking)
 }))
 

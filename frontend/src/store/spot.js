@@ -31,7 +31,7 @@ const loadMySpots=(spots)=>({
 
 
 export const createSpot = (data) =>async (dispatch)=>{
-    console.log(3333333333)
+   
     const response = await csrfFetch(`/api/spots`, {
         method: 'post',
         headers: {
@@ -42,7 +42,7 @@ export const createSpot = (data) =>async (dispatch)=>{
       
       if (response.ok) {
         const spot = await response.json();
-        //console.log('$$$$$$$$',spot)
+        
         dispatch(addOneSpot(spot));
         return spot;
       }
@@ -75,7 +75,7 @@ export const getMySpots=(userId)=>async(dispatch)=>{
 
 
 export const deleteSpot=(spotId)=>async(dispatch)=>{
-   console.log('!!!!!!!!!!!')
+   
    const response= await csrfFetch(`/api/spots/${spotId}`, {
      method: 'delete'
    });
