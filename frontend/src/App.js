@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Route, Switch,Redirect } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
@@ -12,9 +12,11 @@ import SingleSpotPage from "./components/SingleSpotPage";
 import AllBookings from "./components/AllBookings"
 import SingleBookingPage from "./components/SingleBookingPage";
 import AllMySpots from "./components/AllMySpots";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -26,7 +28,10 @@ function App() {
       <Mainbody />
       {isLoaded && (
         <Switch>
-          <Route exact path='/'></Route>
+          <Route exact path='/'>
+          {/* {sessionUser?(<AllSpots />):(<Redirect to="/login" />)} */}
+          <LandingPage/>
+          </Route>
 
           <Route path="/login" >
             <LoginFormPage />
@@ -35,20 +40,25 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route  path='/spots/:spotId'>
-          <SingleSpotPage/>
+            {sessionUser?(<SingleSpotPage/>):(<Redirect to="/login" />)}
+          
           </Route>
           
           <Route exact path='/spots'>
-            <AllSpots />
+          {sessionUser?(<AllSpots />):(<Redirect to="/login" />)}
+            
           </Route>
           <Route exact path='/users/:userId/bookings'>
-            <AllBookings />
+          {sessionUser?(<AllBookings />):(<Redirect to="/login" />)}
+            
           </Route>
           <Route exact path='/bookings/:bookingId'>
-            <SingleBookingPage />
+          {sessionUser?(<SingleBookingPage />):(<Redirect to="/login" />)}
+            
           </Route>
           <Route exact path='/users/:userId/spots'>
-            <AllMySpots/>
+          {sessionUser?(<AllMySpots/>):(<Redirect to="/login" />)}
+            
           </Route>
           <Route>
             <h2>404 not found</h2>

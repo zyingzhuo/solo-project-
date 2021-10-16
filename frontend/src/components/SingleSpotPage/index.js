@@ -23,7 +23,8 @@ const SingleSpotPage =() =>{
     
     const {spotId}= useParams();
     const spot=useSelector(state=>state.spot[spotId]);
-    const userId=useSelector(state=>state.session.user.id)
+    const userIdFromSession=useSelector(state=>state.session.user.id)
+    const userIdFromSpot=spot?.userId
     
     const dispatch=useDispatch();
 
@@ -34,7 +35,7 @@ const SingleSpotPage =() =>{
 
     const handleRemoveItem = async(e) => {
        const  response=await dispatch(deleteSpot(e.target.id));
-        if(response) {history.push(`/users/${userId}/spots`)}
+        if(response) {history.push(`/users/${userIdFromSession}/spots`)}
         
        };
 
@@ -52,8 +53,9 @@ const SingleSpotPage =() =>{
             <div>
                 <img src={(spot?.Images)[0]?.url} />
             </div>
+            {userIdFromSession===userIdFromSpot && <div>
             <button onClick={()=>setEditForm(true)} >edit</button>
-            <button id={spot?.id} onClick={handleRemoveItem}>delete</button>
+            <button id={spot?.id} onClick={handleRemoveItem}>delete</button></div>}
             <button onClick={()=>setCreateBooking(true)}>create booking</button>
             {editForm && (
                 <EditListingForm spotId={spot.id}/>

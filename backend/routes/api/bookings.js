@@ -8,22 +8,15 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
-const validateCreateBookings = [
-    check('city')
-      .exists({ checkFalsy: true })
-      .withMessage('Please provide a valid city.'),
-    check('name')
-      .exists({ checkFalsy: true })
-      .isLength({ min: 10 })
-      .withMessage('Please provide a listing name with at least 10 characters.'),
-    check('price')
-      .exists({ checkFalsy: true })
-      .withMessage('Please provide price detail.'),
-    handleValidationErrors,
-  ];
+// const validateCreateBookings = [
+//     check('endDate')
+//       .isAfter('startDate')
+//       .withMessage('endDate must be later than startDate'),
+//     handleValidationErrors,
+//   ];
 
 
-router.post('/', asyncHandler(async(req,res)=>{
+router.post('/',asyncHandler(async(req,res)=>{
     const {spotId,userId,startDate,endDate}=req.body
 
     const booking=await Booking.create({spotId,userId,startDate,endDate})
