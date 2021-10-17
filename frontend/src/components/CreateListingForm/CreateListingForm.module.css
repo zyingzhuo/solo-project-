@@ -1,0 +1,21 @@
+.CreateListingForm{
+    border: solid 	#E6E6FA 11px;
+    height: 500px;
+    width: 400px;
+    border-radius: 30px;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 32vw
+}
+
+.formInputs{
+    display:flex;
+    flex-direction: column;
+}
+
+.formInputsMinus{
+    display: flex;
+    flex-direction: column;
+}

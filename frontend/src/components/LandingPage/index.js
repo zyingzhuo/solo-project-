@@ -10,7 +10,7 @@ import SingleSpot from '../../components/SingleSpot'
 import { NavLink } from 'react-router-dom';
 import { getBookings } from '../../store/booking';
 import SingleBooking from '../SingleBooking';
-//import SingleSpot from '../../components/SingleSpot';
+import styles from './LandingPage.module.css'
 
 
 const LandingPage=()=>{
@@ -21,11 +21,30 @@ const LandingPage=()=>{
 //   useEffect(()=>{
 //       dispatch(getMySpots(userId))
 //   },[dispatch,userId])
- 
+
+const images=[
+    "https://images.unsplash.com/photo-1609766857326-18a204c2cf31?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1740&q=80",
+    "https://images.unsplash.com/photo-1617836976766-16b8d2ae0733?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    "https://images.unsplash.com/photo-1575422098125-7b0355f07f77?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1746&q=80",
+]
+
+const [currentIndex,setCurrentIndex]=useState(0);
+
+useEffect(()=>{
+    const timeToChangeImage=setTimeout(()=>{
+        if(currentIndex === images.length -1) {
+            setCurrentIndex(0)
+        } else {
+            setCurrentIndex(currentIndex+1)
+        }
+    }, 5000)
+
+    return ()=>{clearTimeout(timeToChangeImage)}
+}, [currentIndex,images.length])
 
  
   return (
-    <div>
+    <div className={styles.landingPageBody}>
       {/* <h1>This is all your listings</h1>
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
@@ -33,8 +52,9 @@ const LandingPage=()=>{
           <SingleSpot  spot={spot} />
         ))}
         </ul> */}
-          <NavLink to="/spots">explore places</NavLink>
-        <img src={"https://images.unsplash.com/photo-1563732247092-b044f9e542e7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=434&q=80"} />
+        <div className={styles.changingImagesBody} style={{backgroundImage: 'url('+images[currentIndex]+')'}}>
+          <div className={styles.wordsContainer}><a className={styles.centerWords}href="/spots"> explore places</a></div>
+          </div>
     </div>
   );
 };

@@ -1,0 +1,30 @@
+.SingleSpotContainer {
+   
+        display: inline-block ;
+        width:400px;
+        height:400px;
+        /* border:1px solid blue; */
+        /* border-left:10px solid #ccc; */
+        /* background:#eee; */
+        padding:5px;
+        margin:5px;
+        /* background-size: 400px; */
+    }
+        
+    
+    .PriceAndCity{
+        display:flex;
+        justify-content: space-between;
+    }
+   
+    .PriceContainer{
+        margin-right:4vw
+    }
+    .CityContainer{
+        margin-left:2vw;
+    }
+
+
+.SingleSpotContainer:hover{
+    color:orange
+}

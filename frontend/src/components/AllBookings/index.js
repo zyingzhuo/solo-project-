@@ -25,7 +25,7 @@ const AllBookings=()=>{
  
   return (
     <div>
-      <h1>This is all your bookings</h1>
+      <h1 style={{textAlign:"center"}}>This is all your bookings</h1>
       {!bookingsArr.length && <span>No listing available right now.</span>}
       <ul >
         {bookingsArr.map((booking) => (

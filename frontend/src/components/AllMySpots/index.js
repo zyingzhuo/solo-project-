@@ -26,7 +26,7 @@ const AllMySpots=()=>{
  
   return (
     <div>
-      <h1>This is all your listings</h1>
+      <h1 style={{textAlign:"center"}}>This is all your listings</h1>
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
         {spotsArr.map((spot) => (

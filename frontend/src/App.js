@@ -13,6 +13,7 @@ import AllBookings from "./components/AllBookings"
 import SingleBookingPage from "./components/SingleBookingPage";
 import AllMySpots from "./components/AllMySpots";
 import LandingPage from "./components/LandingPage";
+import CreateListingForm from "./components/CreateListingForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +33,9 @@ function App() {
           {/* {sessionUser?(<AllSpots />):(<Redirect to="/login" />)} */}
           <LandingPage/>
           </Route>
-
+          <Route path="/spots/new">
+            <CreateListingForm />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>

@@ -19,7 +19,7 @@ const deleteOneBooking=(bookingId)=>({
     bookingId
 })
 
-export const createBooking=(data)=>async(dispatch)=>{
+export const createTheBooking=(data)=>async(dispatch)=>{
 
 const response=await csrfFetch(`/api/bookings`, {
     method: 'post',

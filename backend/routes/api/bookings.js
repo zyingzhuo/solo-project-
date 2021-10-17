@@ -21,8 +21,12 @@ router.post('/',asyncHandler(async(req,res)=>{
 
     const booking=await Booking.create({spotId,userId,startDate,endDate})
     const spot=await Spot.findByPk(spotId)
+    // const image=await Image.findAll({
+    //     where:{spotId}
+    // })
     booking.dataValues.Spot=spot
    
+  
     return res.json(booking)
 }))
 

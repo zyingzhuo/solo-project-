@@ -8,6 +8,8 @@ import styles from './CreateListingForm.module.css';
 //import { Redirect } from 'react-router';
 import {createSpot} from '../../store/spot'
 
+
+
 function CreateListingForm() {
 
     const dispatch = useDispatch();
@@ -58,9 +60,10 @@ function CreateListingForm() {
     
   
     return (
-      <div  >
-      <form onSubmit={handleSubmit} >
-        <div >
+      
+      <div  className={styles.CreateListingForm}>
+      <form onSubmit={handleSubmit} className={styles.formInputs}>
+        <div className={styles.formInputsMinus} >
         <label>
           Enter the hosting city
           <input

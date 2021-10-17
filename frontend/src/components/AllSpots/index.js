@@ -8,6 +8,7 @@ import { getOneSpot } from '../../store/spot';
 import { getSpots } from '../../store/spot';
 import SingleSpot from '../../components/SingleSpot'
 import { NavLink } from 'react-router-dom';
+import styles from './AllSpots.module.css'
 
 
 const AllSpots=()=>{
@@ -22,8 +23,8 @@ const AllSpots=()=>{
 
  
   return (
-    <div>
-      <h1>Welcome to all the listings</h1>
+    <div className={styles.AllSpotsContainer}>
+      {/* <h1>Welcome to all the listings</h1> */}
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
         {spotsArr.map((spot) => (

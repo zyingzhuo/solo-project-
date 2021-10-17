@@ -33,6 +33,7 @@ const SingleBooking =({booking}) =>{
             </>)} */}
             {booking&&(
             <div>
+            {/* <img src={(spotFromSelector?.Images)[0]?.url} /> */}
             <p>Your trip to {booking?.Spot.name} from {booking?.startDate} to {booking?.endDate} is booked</p>
             <NavLink to={`/bookings/${booking.id}`}>booking details</NavLink>
             

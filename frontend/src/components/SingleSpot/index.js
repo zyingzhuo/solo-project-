@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { getOneSpot } from '../../store/spot';
 //import styles from './LoginForm.module.css';
 import { NavLink } from 'react-router-dom';
+import styles from './SingleSpot.module.css'
 
 const SingleSpot =({spot}) =>{
    
@@ -21,20 +22,30 @@ const SingleSpot =({spot}) =>{
     // }, [dispatch, spotId])
   //console.log(spotId)
     return (
-        <div>
-            'hello world
+        <div className={styles.SingleSpotContainer}>
+            
             { spot&&(
                 <>
-            <NavLink to={`/spots/${spot.id}`}>{spot?.name}</NavLink>
-            {spot?.price}
-            {spot?.city}
+            
+            {/* <NavLink to={`/spots/${spot.id}`}>{spot?.name}</NavLink> */}
+           
             {/* //{spot?.url} */}
             <div>
-                <img src={(spot?.Images)[0]?.url} />
+                <NavLink to={`/spots/${spot.id}`}>
+                <img src={(spot?.Images)[0]?.url } style={{height:"375px", width:"375px", 'borderRadius':"15px"}} />
+                </NavLink>
+            </div>
+            <div className={styles.PriceAndCity}>
+            <span className={styles.CityContainer}>
+            {spot?.city}
+            </span>
+            <span className={styles.PriceContainer}>
+            ${spot?.price}/night
+            </span>
             </div>
             {/* {(spot?.Images)[0].url}  */}
             </>)}
-
+          
             
         </div>
     )

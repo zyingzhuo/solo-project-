@@ -12,6 +12,7 @@ import EditListingForm from '../EditListingForm';
 import { useEditForm } from '../../context/editSpotContext';
 import { useCreateBookingForm } from '../../context/createBookingContext';
 import CreateBookingForm from'../CreateBookingForm'
+import styles from './SingleSpotPage.module.css'
 
 const SingleSpotPage =() =>{
     
@@ -42,13 +43,13 @@ const SingleSpotPage =() =>{
    
   
     return (
-        <div>
+        <div className={styles.spotContainer}>
             'single spot page'
             { spot&&(
                 <>
-            {spot?.name}
-            {spot?.price}
-            {spot?.city}
+            {spot?.name} in {spot?.city} at ${spot?.price}/night
+            
+            
             {/* //{spot?.url} */}
             <div>
                 <img src={(spot?.Images)[0]?.url} />

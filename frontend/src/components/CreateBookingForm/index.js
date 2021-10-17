@@ -5,11 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect ,useHistory} from 'react-router-dom';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {createBooking} from '../../store/booking'
+import {createTheBooking} from '../../store/booking'
+import {useCreateBookingForm} from'../../context/createBookingContext'
 
 function CreateBookingForm ({spot}) {
     const dispatch=useDispatch();
     const history=useHistory();
+
+    const {createBooking, setCreateBooking}=useCreateBookingForm()
 
     const userId=useSelector(state=>state.session.user.id)
     const spotId=spot.id
@@ -28,7 +31,7 @@ function CreateBookingForm ({spot}) {
         }
     
 
-    const booking=await  dispatch(createBooking(payload));
+    const booking=await  dispatch(createTheBooking(payload));
 
     if(booking) {
 
@@ -36,7 +39,10 @@ function CreateBookingForm ({spot}) {
         //blah blah , maybe a form tell that congradulations your trip 
     }
   }
-    const totalPrice=(endDate-startDate)*(spot.price)
+    // const totalPrice=(endDate-startDate)*(spot.price)
+    let timeDiff=endDate.getTime()-startDate.getTime();
+    let daysDiff=timeDiff/(1000*60*60*24)
+    const totalPrice=Math.round(daysDiff*(spot.price)).toLocaleString()
 
     return (
         <div  >
@@ -55,10 +61,11 @@ function CreateBookingForm ({spot}) {
             price per night: {spot.price}
           </label>
           <label>
-           total price {totalPrice}
+           total price ${totalPrice}
           </label>
             </div>
           <button type="submit" >book the trip</button>
+          <button onClick={()=>setCreateBooking(false)}>cancel</button>
         </form>
         </div>
       );

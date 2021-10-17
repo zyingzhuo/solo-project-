@@ -38,7 +38,7 @@ function Navigation({ isLoaded }){
     <ul>
       <li style={{listStyleType: 'none'}}>
         <div className={styles.sessionLink}>
-        <div><i className="fab fa-airbnb"></i>plus</div>
+        <div><i className="fab fa-airbnb"></i>plusBnb</div>
         <div className={styles.session_link_wrap}><NavLink exact to="/" onClick={()=>setBooking(false)}  style={{textDecoration:'none'}}>Home</NavLink></div>
         {isLoaded && sessionLinks}
         </div>
