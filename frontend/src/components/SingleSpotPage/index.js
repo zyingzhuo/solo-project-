@@ -54,11 +54,10 @@ const SingleSpotPage =() =>{
             <div>
                 <img src={(spot?.Images)[0]?.url} />
             </div>
-            {/* {userIdFromSession===userIdFromSpot && */}
-                <div> 
+            {userIdFromSession===userIdFromSpot && <div> 
             <button onClick={()=>setEditForm(true)} >edit</button>
-            <button id={spot?.id} onClick={handleRemoveItem}>delete</button></div>
-            {/* } */}
+            <button id={spot?.id} onClick={handleRemoveItem}>delete</button></div>}
+            
             <button onClick={()=>setCreateBooking(true)}>create booking</button>
             {editForm && (
                 <EditListingForm spotId={spot.id}/>
