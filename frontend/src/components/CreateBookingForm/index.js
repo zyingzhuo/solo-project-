@@ -58,10 +58,10 @@ function CreateBookingForm ({spot}) {
             <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
           </label>
           <label>
-            price per night: {spot.price}
+            price per night: ${spot.price}
           </label>
-          <label>
-           total price ${totalPrice}
+          <label style={{marginLeft:'10px'}}>
+            total price: ${totalPrice}
           </label>
             </div>
           <button type="submit" >book the trip</button>

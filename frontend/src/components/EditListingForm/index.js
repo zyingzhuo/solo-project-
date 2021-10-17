@@ -17,11 +17,12 @@ function EditListingForm({spotId}) {
     const history=useHistory();
 
     const userId = useSelector(state => state.session.user.id);
+    const currentSpot=useSelector(state=>state.spot[spotId])
 
-    const [city, setCity] = useState('');
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState(0);
-    const [url, setURL]=useState('')
+    const [city, setCity] = useState(currentSpot.city);
+    const [name, setName] = useState(currentSpot.name);
+    const [price, setPrice] = useState(currentSpot.price);
+    const [url, setURL]=useState(currentSpot.Images[0].url)
   
 
     // const reset=()=>{
