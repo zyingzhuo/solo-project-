@@ -28,7 +28,7 @@ const AllSpots=()=>{
       {!spotsArr.length && <span>No listing available right now.</span>}
       <ul >
         {spotsArr.map((spot) => (
-          <SingleSpot  spot={spot} />
+          <SingleSpot  spot={spot} key={spot.id} />
         ))}
         </ul>
     </div>

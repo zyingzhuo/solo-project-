@@ -1,3 +1,4 @@
 .AllSpotsContainer{
-    grid-template-columns: repeat(2, minmax(0px, 1fr))
+    grid-template-columns: repeat(2, minmax(0px, 1fr));
+    margin-left:10vw
 }

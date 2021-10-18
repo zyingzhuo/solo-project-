@@ -29,7 +29,7 @@ const AllBookings=()=>{
       {!bookingsArr.length && <span>No listing available right now.</span>}
       <ul >
         {bookingsArr.map((booking) => (
-          <SingleBooking  booking={booking} />
+          <SingleBooking  booking={booking} key={booking.id}/>
         ))}
         </ul>
     </div>

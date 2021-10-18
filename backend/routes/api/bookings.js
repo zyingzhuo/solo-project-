@@ -20,14 +20,24 @@ router.post('/',asyncHandler(async(req,res)=>{
     const {spotId,userId,startDate,endDate}=req.body
 
     const booking=await Booking.create({spotId,userId,startDate,endDate})
-    const spot=await Spot.findByPk(spotId)
-    // const image=await Image.findAll({
-    //     where:{spotId}
-    // })
-    booking.dataValues.Spot=spot
+    
+    const bookingWithSpotAndImage=await Booking.findByPk(booking.id,{
+        include:[
+            {
+                model:Spot,
+                include: [Image]
+            }
+            
+        ]
+    })
+
+    //another approach to include the Spot table with booking table
+    // const spot=await Spot.findByPk(spotId)
    
-  
-    return res.json(booking)
+    //  booking.dataValues.Spot=spot
+    
+   
+    return res.json(bookingWithSpotAndImage)
 }))
 
 router.get('/:id(\\d+)', asyncHandler(async function(req,res) {

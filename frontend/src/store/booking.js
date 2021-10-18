@@ -31,6 +31,7 @@ const response=await csrfFetch(`/api/bookings`, {
 
 if(response.ok) {
     const booking=await response.json();
+    console.log('////', booking)
     dispatch(addOneBooking(booking));
     return booking
 }
@@ -73,7 +74,9 @@ const bookingReducer=(state=initialState, action)=>{
     switch(action.type) {
         case ADD_BOOKING: {
            const newState={...state}
+           
            newState[action.booking.id]=action.booking;
+          
            return newState
         }
         case LOAD_BOOKINGS: {
