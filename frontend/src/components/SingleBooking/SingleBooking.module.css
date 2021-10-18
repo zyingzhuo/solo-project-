@@ -1,0 +1,10 @@
+.SingleBookingContainer{
+    display: inline-block ;
+    width:400px;
+    height:400px;
+    /* border:1px solid blue; */
+    /* border-left:10px solid #ccc; */
+    /* background:#eee; */
+    padding:5px;
+    margin:5px;
+}

@@ -49,7 +49,13 @@ router.post(
   router.get('/:id(\\d+)/bookings', asyncHandler(async function(req,res) {
     const bookings=await Booking.findAll({
         where: {userId:parseInt(req.params.id)},
-        include: Spot
+        include:[
+          {
+              model:Spot,
+              include: [Image]
+          }
+          
+      ]
     })
     
     return res.json(bookings)

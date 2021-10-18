@@ -29,10 +29,10 @@ const SingleBookingPage =() =>{
         if(response) {history.push(`/users/${userId}/bookings`)}
     }
   
-
+   
     return (
-        <div>
-            hello
+        <div style={{marginLeft: '550px', marginTop:'80px'}}>
+            
             {/* 'hello world
             { booking&&(
                 <>
@@ -42,9 +42,9 @@ const SingleBookingPage =() =>{
             </>)} */}
             {booking&&(
             <div>
-            <p>Your trip to {booking?.Spot?.name} from {booking?.startDate} to {booking?.endDate} is booked</p>
-            
-            <button id={booking?.id} onClick={handleDeleteBooking}>delete</button>
+            <p>Your trip to {booking?.Spot?.name} from {booking?.startDate} to {booking?.endDate} is booked.</p>
+            <img src={booking?.Spot.Images[0].url} style={{height:"500px", width:"500px", 'borderRadius':"15px"}}/>
+            <div ><button id={booking?.id} onClick={handleDeleteBooking} >delete</button></div>
             </div>)}
 
             

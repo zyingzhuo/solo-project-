@@ -10,6 +10,7 @@ import SingleSpot from '../../components/SingleSpot'
 import { NavLink } from 'react-router-dom';
 import { getBookings } from '../../store/booking';
 import SingleBooking from '../SingleBooking';
+import styles from './AllBookings.module.css'
 
 
 const AllBookings=()=>{
@@ -24,7 +25,7 @@ const AllBookings=()=>{
 
  
   return (
-    <div>
+    <div className={styles.AllBookingsContainer}>
       <h1 style={{textAlign:"center"}}>This is all your bookings</h1>
       {!bookingsArr.length && <span>No listing available right now.</span>}
       <ul >
